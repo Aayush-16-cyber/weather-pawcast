@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Whiskers</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen bg-black text-white overflow-hidden">
+<!-- Weather Alerts Box -->
+<div id="weather-alerts" class="absolute top-[120px] left-4 md:left-10 right-4 md:right-10 z-20 hidden p-4 bg-red-600/80 text-white rounded-xl shadow-lg">
+  <h3 class="font-bold text-lg mb-1">⚠️ Weather Alert</h3>
+  <p id="alert-message" class="text-sm">Fetching alerts...</p>
+</div>
+
+  <!-- Weather Background -->
+  <div id="weather-background" class="absolute inset-0 z-0">
+    <img src="assets/backgrounds/bg_sunny_day.gif" alt="Weather Background" class="w-full h-full object-cover">
+  </div>
+
+  <!-- 🔍 City Search Bar -->
+  <div class="flex justify-center items-center gap-2 p-4 z-20 relative">
+    <input id="city-input" type="text" placeholder="Enter city name"
+      class="px-3 py-2 rounded-lg w-60 text-black shadow-md" />
+    <button onclick="searchCity()"
+      class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md">
+      Search
+    </button>
+    <!-- 🔇 Mute Toggle Button -->
+    <button id="mute-toggle" class="text-white text-xl ml-2" title="Toggle sound">🔊</button>
+  </div>
+
+  <!-- Main Weather Info -->
+  <div class="absolute top-20 left-4 right-4 md:left-10 md:right-10 z-10 p-4 bg-black/50 backdrop-blur-md rounded-2xl shadow-lg">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <h1 class="text-3xl font-bold">📍 <span id="location">Detecting...</span></h1>
+        <p class="text-xl" id="date">Loading date...</p>
+        <p class="text-lg" id="weather-desc">Getting weather...</p>
+        <p class="text-6xl font-bold" id="temperature">--°C</p>
+        <p class="text-sm">UV: <span id="uv-index">--</span> | AQI: <span id="aqi">--</span></p>
+      </div>
+      <div class="flex flex-col items-center">
+        <img id="weather-icon" src="assets/icons/icon_sun.png" alt="Weather Icon" class="w-20 h-20">
+        <p class="text-center text-sm mt-2">Feels like <span id="feels-like">--°C</span></p>
+
+        <!-- Moon & Sun Info -->
+        <div class="mt-3 text-sm text-center space-y-1 text-white font-medium">
+  <p>🌅 Sunrise: <span id="sunrise">--</span></p>
+  <p>🌇 Sunset: <span id="sunset">--</span></p>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Cat Message -->
+  <div class="absolute bottom-[250px] left-4 md:left-10 z-20 flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 shadow-md max-w-md">
+    <img src="assets/cats/cat_sunny.gif" alt="Weather Cat" class="w-20 h-20 object-contain rounded-lg" id="cat-gif">
+    <p class="text-white text-sm font-medium" id="cat-message">
+      🌞 Purr-fect sunny day! Don’t forget sunscreen — I’ve got fur, you don’t!
+    </p>
+  </div>
+
+  <!-- Forecast -->
+  <div class="absolute bottom-4 left-4 md:left-10 z-10 w-[95%] max-w-5xl p-5 bg-black/50 backdrop-blur-md rounded-2xl shadow-lg">
+    <h2 class="text-2xl font-semibold mb-3">5-Day Forecast</h2>
+    <div id="forecast" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 text-center text-base">
+      <!-- Forecast items will be added here by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Auto-refresh message -->
+  <div class="absolute top-2 right-2 text-xs text-gray-200 z-20">Auto-refresh every 5 mins</div>
+
+  <!-- 🔊 Script with Sound & Logic -->
+  <script src="script.js"></script>
+
+
+<style>
+  .chat-bubble-user {
+    @apply bg-blue-500 text-white px-3 py-2 rounded-xl rounded-br-none max-w-[75%] self-end;
+  }
+  .chat-bubble-bot {
+    @apply bg-gray-700 text-white px-3 py-2 rounded-xl rounded-bl-none max-w-[75%] self-start;
+  }
+  #chat-messages {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+</body>
+</html>
