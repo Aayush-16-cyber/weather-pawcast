@@ -1,6 +1,6 @@
 # 🌦️ Weather Pawcast
 
-A sleek, modern weather forecast app — built with ❤️ by **Aayush** ([Aayush-16-cyber](https://github.com/Aayush-16-cyber)) and **Ishmeet** ([IshmeetKaur222](https://github.com/IshmeetKaur222)).
+A sleek, modern weather forecast app — crafted by **Aayush** ([Aayush-16-cyber](https://github.com/Aayush-16-cyber)) and **Ishmeet** ([IshmeetKaur222](https://github.com/IshmeetKaur222)).
 
 🌐 **Live Site**: [https://weather-pawcast.netlify.app](https://weather-pawcast.netlify.app)
 
